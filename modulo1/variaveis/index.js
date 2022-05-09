@@ -67,6 +67,7 @@ console.log("Você está respondendo pelo celular?", device);
 
 //3º exercício//
 
+/*
 let apple = 10
 let orange = 25
 let pineapple = 10
@@ -74,3 +75,18 @@ apple = orange
 orange = pineapple
 console.log("O novo valor de apple é", apple);
 console.log("O novo valor de orange é", orange);
+*/
+
+
+// DESAFIO //
+
+/*
+let number1 = prompt("qual é seu primeiro numero?");
+number1 = parseInt(number1);
+let number2 = prompt("qual é seu segundo numero?");
+number2 = parseInt(number2)
+let x = number1+number2;
+let y = number1*number2;
+console.log("O primeiro número somado ao segundo número resulta em X que é igual =", x);
+console.log("O primeiro número multiplicado pelo segundo número resulta em Y que é igual =", y);
+*/
