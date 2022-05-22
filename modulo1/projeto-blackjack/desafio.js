@@ -1,69 +1,67 @@
-let jogador = [];
-let computador = [];
+let cartasJogador = [];
+let cartasPc = [];
 
-if (confirm("Bem-vindo ao jogo de Blackjack" + "\n" + "Quer iniciar uma nova rodada?")) {
+if (confirm("Seja bem-vindo ao jogo Blackjack," + "\n" + "Quer iniciar uma rodada?")) {
 
-   let cartasOk = false;
+   let checkCartas = false;
 
-   while (!cartasOk) {
-      jogador.push(comprarCarta());
-      jogador.push(comprarCarta());
-      computador.push(comprarCarta());
-      computador.push(comprarCarta());
-      if ((jogador[0].valor === 11 && jogador[1].valor === 11) || 
-         (computador[0].valor === 11 && computador[1].valor === 11)) {
-            jogador = [];
-            computador = [];
+   while (!checkCartas) {
+      cartasJogador.push(comprarCarta());
+      cartasJogador.push(comprarCarta());
+      cartasPc.push(comprarCarta());
+      cartasPc.push(comprarCarta());
+
+      if ((cartasJogador[0].valor === 11 && cartasJogador[1].valor ===11) || 
+      (cartasPc[0].valor === 11 && cartasPc[1].valor === 11)) {
+         cartasJogador = [];
+         cartasPc = [];
       } else {
-         cartasOk = true;
+         checkCartas = true;
       }
    }
 
-   let comprando = true;
+   let comprar = true;
 
-   while (comprando) {
+   while (comprar) {
       let textos = "";
       let pontos = 0;
-      for (let carta of jogador) {
+      for (let carta of cartasJogador) {
          textos += carta.texto + " ";
          pontos += carta.valor;
       }
       if (pontos > 21) {
-         comprando = false;
+         comprar = false;
       } else {
-         let confirmCompra = confirm(
-            `Suas cartas são ${textos}. A carta revelada do computador é ${computador[0].texto}.` +
-            "\n"+
-            "Deseja comprar mais uma carta?"
-         )
-         if (confirmCompra) {
-            jogador.push(comprarCarta());
+         let confirmarCompra = confirm(`Suas cartas são ${textos}. A carta revelada do computador é ${cartasPc[0].texto}` + 
+         "\n" + "Deseja comprar mais uma carta?");
+         if (confirmarCompra) {
+            cartasJogador.push(comprarCarta());
          } else {
-            comprando = false;
+            comprar = false;
          }
       }
    }
-
+   
    let pontosComputador = 0;
    let pontosJogador = 0;
    let textosComputador = "";
    let textosJogador = "";
 
-   for (let carta of computador) {
+   for (let carta of cartasPc) {
       pontosComputador += carta.valor;
       textosComputador += carta.texto + " ";
    }
-   for (let carta of jogador) {
+   for (let carta of cartasJogador) {
       pontosJogador += carta.valor;
       textosJogador += carta.texto + " ";
    }
 
    if (pontosJogador <= 21) {
-      while (pontosComputador < pontosJogador && pontosComputador <= 21) {
-         computador.push(comprarCarta());
+      while(pontosComputador < pontosJogador && pontosComputador <= 21) {
+         cartasPc.push(comprarCarta());
          pontosComputador = 0;
          textosComputador = "";
-         for (let carta of computador) {
+         for (let carta of cartasPc) {
             pontosComputador += carta.valor;
             textosComputador += carta.texto + " ";
          }
@@ -72,23 +70,23 @@ if (confirm("Bem-vindo ao jogo de Blackjack" + "\n" + "Quer iniciar uma nova rod
 
    let resultado = "";
    if (pontosJogador > pontosComputador && pontosJogador <= 21) {
-      resultado = "O usário ganhou!";
+      resultado = "Parabéns, você ganhou!";
    } else if (pontosComputador > pontosJogador && pontosComputador <= 21) {
-      resultado = "O computador ganhou!";
-   } else if (pontosComputador > 21 && pontosJogador <= 21) {
-      resultado = "O usuário ganhou!";
-   } else if (pontosJogador > 21 && pontosComputador <=21) {
-      resultado = "O computador ganhou!";
+      resultado = "Que pena, o computador ganhou!"
+   } else if (pontosComputador > 21 && pontosComputador <= 21) {
+      resultado = "Parabéns, você ganhou!";
+   } else if (pontosJogador > 21 && pontosComputador <= 21) {
+      resultado = "Que pena, o computador ganhou!";
    } else {
-      resultado = "Empate";
+      resultado = "Ninguém ganhou, deu empate!";
    }
 
    alert(
-      `Usuário - Cartas: ${textosJogador} - Pontuação: ${pontosJogador}` +
+      `Usuário - cartas: ${textosJogador} - pontuação: ${pontosJogador}` +
       "\n" +
-      `Computador - Cartas: ${textosComputador} - Pontuação: ${pontosComputador}` +
+      `Computador - cartas: ${textosComputador} - pontuação: ${pontosComputador}` +
       "\n" +
-      resultado
+      resultado   
    )
 } else {
    alert("O jogo acabou!");

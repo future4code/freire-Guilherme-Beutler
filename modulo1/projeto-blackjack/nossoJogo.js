@@ -1,26 +1,27 @@
-console.log("Boas Vindas ao jogo de Blackjack!");
+console.log("Bem-vindo ao Blackjack");
 
-let jogo = confirm("Quer iniciar uma nova rodada?");
+let jogar = confirm("Quer iniciar uma nova rodada?");
 
-if (jogo) {
-   let carta1Usuario = comprarCarta();
-   let carta2Usuario = comprarCarta();
-   let carta1Pc = comprarCarta();
-   let carta2Pc = comprarCarta();
+if (jogar) {
+   let primeiraCartaJogador = comprarCarta();
+   let segundaCartaJogador = comprarCarta();
+   let primeiraCartaPc = comprarCarta();
+   let segundaCartaPc = comprarCarta();
 
-   let pontuacaoUsuario = carta1Usuario.valor + carta2Usuario.valor;
-   let pontuacaoPc = carta1Pc.valor + carta2Pc.valor;
+   let totalPontosJogador = primeiraCartaJogador.valor + segundaCartaJogador.valor;
+   let totalPontosPc = primeiraCartaPc.valor + segundaCartaPc.valor
 
-   console.log(`Usuário - cartas: ${carta1Usuario.texto} ${carta2Usuario.texto} - ${pontuacaoUsuario}`);
-   console.log(`Computador - cartas: ${carta1Pc.texto} ${carta2Pc.texto} - ${pontuacaoPc}`);
+   console.log(`Usuário - cartas: ${primeiraCartaJogador.texto} ${segundaCartaJogador.texto} - pontuação: ${totalPontosJogador}`);
+   console.log(`Computador - cartas: ${primeiraCartaPc.texto} ${segundaCartaPc.texto} - pontuação: ${totalPontosPc}`);
 
-   if (pontuacaoUsuario > pontuacaoPc) {
-      console.log("O usuário ganhou!");
-   } else if (pontuacaoPc > pontuacaoUsuario) {
-      console.log("O computador ganhou!");
-   } else if (pontuacaoUsuario === pontuacaoPc) {
-      console.log("Empate!");
+   if (totalPontosJogador > totalPontosPc) {
+      console.log("Parabéns, você ganhou!");
+   } else if (totalPontosJogador === totalPontosPc) {
+      console.log("Deu empate, ninguém ganhou!");
+   } else {
+      console.log("Que pena, o computador ganhou!");
    }
+
 } else {
-   console.log("O jogo acabou!");
+   console.log("Acabou o jogo!");
 }
