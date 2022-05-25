@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="./img/Cedro_Logo_Prancheta .png" alt="Logo">
+            <ul class="nav-list">
+                <li><a href="./index.html">Página Inicial</a></li>
+                <li><a href="./ctrl-estoque.html">Controle de Estoque</a></li>
+                <li><a href="./add-produto.html">Adicionar Produto</a></li>
+                <li><a href="./funcionarios.html">Funcionários</a></li>
+                <li><a href="./pagina-de-vendas.html">Vendas</a></li>
+                <li><a href="./historico-vendas.html">Histórico Vendas</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <table class="form-vendas">
+        <tr>
+            <th>Produto(s)</th>
+            <th>Quantidade</th>
+            <th>Forma de Pagamento</th>
+            <th>Vendedor</th>
+        </tr>
+        
+        <tr>
+            <td><form name="formulario" method="post" action="">
+                <select name="select">
+                <option value="item_1">
+                VELA TANGERINE & VANILLA</option>
+                <option value="item_1">
+                HOME SPRAY LAVENDER & NECTARINE</option>
+                <option value="item_1">
+                DIFUSOR MANGO</option>
+                <option value="item_1">
+                BANDEJA PEDRA É PARA 3 ITENS</option>
+            </select>
+            </form>
+            </td>
+
+            <td ><input type="text" name="quantidade" id="quantidade"></td>
+
+            <td><form name="formulario" method="post" action="">
+                <select name="select">
+                    <option value="item_1">
+                    Dinheiro à vista</option>
+                    <option value="item_1">
+                    Cartão de crédito</option>
+                    <option value="item_1">
+                    Cartão de débito</option>
+                </select>
+            </form>
+            </td>
+
+            <td><form name="vendedor" method="post" action="">
+                <select name="select">
+                    <option value="item_1">
+                    Betina</option>
+                    <option value="item_1">
+                    Valentina</option>
+                    <option value="item_1">
+                    Olívia</option>
+                    <option value="item_1">
+                    Miguel</option>
+                    <option value="item_1">
+                    Valentim</option>
+                    <option value="item_1">
+                    Joaquim</option>
+                </select>
+            </form>
+            </td>
+
+        </tr>
+    </table>
+    <button class="botao-vendas" type="#">Lançar Pedido</button>
+</body>
+
+
+</html>
