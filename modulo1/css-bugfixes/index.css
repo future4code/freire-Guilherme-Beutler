@@ -67,10 +67,12 @@ div>p:first-child {
     background-color: #2274a5;
     color: white;
     padding-top: 100px;
+    line-height: 30px;
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    list-style-position: inside;
 }
 
 #container-para-comprar {
@@ -132,6 +134,8 @@ td button:hover {
 }
 
 #back-button {
+    display: block;
+    margin:auto;
     background-color: white;
     width: 100px;
     height: 20px;
