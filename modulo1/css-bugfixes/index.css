@@ -126,6 +126,10 @@ td button:hover {
     height: 100px;
 }
 
+.container-do-search:hover {
+    opacity: .5;
+}
+
 .container-do-search input {
     border-top: 0px;
     border-left: 0px;
