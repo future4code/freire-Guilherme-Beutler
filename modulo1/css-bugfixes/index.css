@@ -76,13 +76,19 @@ div img {
 }
 
 #container-para-comprar {
-    background-color: #e7eb90;
+    background-color: #e7eb90; 
+    display: flex;
+    flex-direction: column; 
 }
 
 #container-para-comprar>p {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+}
+
+#container-para-comprar>a {
+    
 }
 
 
