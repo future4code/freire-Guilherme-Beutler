@@ -26,7 +26,7 @@ button:focus {
 }
 
 img {
-    width: 100px;
+    width: 50pxpx;
 }
 
 div>p:first-child {
@@ -34,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    
 }
 
 .botao-amarelo {
@@ -56,7 +56,7 @@ div img {
 }
 
 .icone {
-    height: 15px;
+    height: 30px;
 }
 
 
