@@ -22,12 +22,12 @@
     <nav class="navbar">
         <img src="./img/logo_home.png" alt="Logo Home">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="about-home">About Me</a></li>
-            <li><a href="#">Experiences</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact Me</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#servicos">Services</a></li>
+            <li><a href="#contact-me">Contact Me</a></li>
         </ul>
     </nav>
 
@@ -41,12 +41,13 @@
         </div>
     </section>
 
-    
-    <p id="about-home">
+
     <section id="about">
         <div class="flex-container">
             <div>
-                <h1>ABOUT ME</h1>
+                <a name="sobre-mim">
+                    <h1>ABOUT ME</h1>
+                </a>
             </div>
             <div>
                 <p>Me chamo Guilherme, tenho 29 anos e sou natural do Rio Grande do Sul.
@@ -62,6 +63,91 @@
         </div>
     </section>
 
+    <section id="experiences">
+        <div>
+            <h1>EXPERIENCES</h1>
+        </div>
+
+        <div>
+            <p>Estudante do curso de Full Stack Dev na Labenu</p>
+            <img src="./img/logo-labenu.png" alt="logo-labenu">
+        </div>
+
+        <div class="univali">
+            <p>Formado em Administração de empresas na Univali</p>
+            <img src="./img/Logo_Univali.png" alt="logo-univali">
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div>
+            <h1>PORTFOLIO</h1>
+        </div>
+
+        <div clas="lojinha">
+            <p>Projeto Minha Lojinha - HTML5/CSS3</p>
+            <img src="./img/minha-lojinha.png" alt="minha-lojinha">
+        </div>
+
+        <div>
+            <p>Projeto Jogo de Blackjack - HTML5/JAVASCRIPT</p>
+            <a href="https://github.com/future4code/freire-Guilherme-Beutler/tree/master/modulo1/projeto-blackjack"
+                target="_blank"><img src="./img/blackjack.png" alt="blackjack"></a>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div>
+            <h1>SERVICES</h1>
+        </div>
+
+        <div>
+            <h3>HTM5/CSS3/JAVASCRIPT</h3>
+            <img src="./img/experiences.png" alt="experiencias">
+        </div>
+    </section>
+
+    <section id="contact-me">
+        <div>
+            <h3>CONTACT ME</h3>
+        </div>
+
+        <div>
+            <form action="Formulario-contato" method="post">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="texto" id="nome" name="nome_usuario">
+                </div>
+
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email_usuario">
+                </div>
+
+                <div>
+                    <label for="mensagem">Mensagem:</label>
+                    <input type="mensagem" name="mensagem_usuario">
+                </div>
+            </form>
+        </div>
+
+        <div class="botao-contato">
+            <button type="submit">Enviar</button>
+        </div>
+    </section>
+
+
+
 </body>
+
+<footer id="footer">
+    <ul>
+        <li><a href="https://www.linkedin.com/in/guilherme-beutler-6b4159122/"><img src="./img/linkedin.png"
+                    alt="linkedin"></a></li>
+        <li><a href="https://github.com/guibeutler"><img src="./img/github.png" alt=""></a></li>
+        <li><a href="https://www.instagram.com/guibeutlerr/"><img src="./img/instagram.png" alt="instagram"></a></li>
+    </ul>
+</footer>
+
 
 </html>
