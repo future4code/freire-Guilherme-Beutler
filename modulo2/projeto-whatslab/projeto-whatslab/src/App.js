@@ -10,10 +10,11 @@ const Main = styled.div`
   text-align: center;
 `
 const SectionTwo = styled.div`
-  height: 75vh;
+  height: 80vh;
   width: 50vh;
   border: 1px solid black;
   display: flex;
+  align-items: flex-end;
   padding: 20px 20px;
   background-image: url(${img});
 `
@@ -21,11 +22,11 @@ const Filds = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 15px;
   gap: 5px;
 `
 const BalloonMessage = styled.div`
-margin-bottom: 2em;
+margin-bottom: 3em;
 padding: 0.9em 0.8em;
 border-radius: 0.5em;
 font-weight: 450;
@@ -41,11 +42,11 @@ background-color: ${props => {
     }
   }};
 
-align-self:  ${props => {
+text-align:  ${props => {
     if (props.tipo === "eu") {
-      return "flex-end"
-    } else {
-      return "flex-start"
+      return "right"
+    } else if (props.tipo === "outro") {
+      return "left"
     }
   }};
 `
