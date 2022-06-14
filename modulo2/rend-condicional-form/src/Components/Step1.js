@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 
@@ -41,10 +41,32 @@ const Select = styled.select`
 `
 
 function Step1() {
+  const [form, setForm] = useState({})
+  const [errors, setErrors] = useState({})
+
+  const handleChange = (event) => {
+    setForm({
+      ...form, [event.target.name]: event.target.value
+    })
+  }
+
+   const validate = () => {
+    let errors = {};
+    if (!form.name) {
+      errors.name = "Preencha o nome!"
+    }
+    return errors;
+  }
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrors(validate(form))
+  }
+
   return (
     <BodyFormOne>
       <h1>Dados Gerais</h1>
-      <FormOne>
+      <FormOne onSubmit={e => handleSubmit(e)}>
         <label>
           <p>Nome</p>
           <Input
@@ -52,7 +74,9 @@ function Step1() {
             nome="name"
             id="name"
             placeholder="Nome"
+            onChange={e => handleChange(e)}
           />
+          {errors.name}
         </label>
         <label>
           <p>Idade</p>

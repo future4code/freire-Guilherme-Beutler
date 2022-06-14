@@ -54,7 +54,6 @@ export default class App extends React.Component {
     this.setState({ step: this.state.step + 1 })
   }
 
-
   render() {
 
     let page;
