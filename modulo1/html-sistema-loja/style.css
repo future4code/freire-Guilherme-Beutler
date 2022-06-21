@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.logo {
+    margin-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFDAB9;
+}
+
+main {
+    background: url(./img/background.jpg) no-repeat center center;
+    background-size: cover;
+    height: 92vh;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+body {
+    font: normal 16px Candara, Arial, sans-serif;
+}
+
+main {
+    text-align: center;
+    padding-top: 500px;
+    color: #fff;
+}
+
+main h1 {
+    font-size: 50px;
+}
+
+main p {
+    font-size: 30px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FFDAB9;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.contato {
+    list-style: none;
+    display: list-item;
+}
+
+.contato li {
+    padding-top: 10px;
+    letter-spacing: 3px;
+}
+
+.redes-sociais {
+    list-style: none;
+    display: flex;
+}
+
+.redes-sociais li {
+    padding-top: 10px;
+    letter-spacing: 3px;
+    margin-left: 35px;
+}
+
+.titulo-estoque {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.estoque-table {
+    border: 1px solid #FFDAB9;
+    margin: auto;
+    text-align: center;
+
+}
+
+.estoque-table tr {
+    border: 1px solid #FFDAB9;
+}
+
+.estoque-table td {
+    border: 1px solid #FFDAB9;
+    padding-left: 30px;
+    padding-right: 30px;     
+}
+
+.titulo-add-produto {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.formulario-add-produto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.formulario-add-produto input {
+    border: 3px solid #FFDAB9;
+    border-radius: 8px;
+    margin-top: 8px;
+    height: 20px;
+}
+
+.botao-enviar-add-produto {
+    border: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #FFDAB9;
+    color: black;
+    font: normal 16px Candara, Arial, sans-serif;
+}
+
+.funcionarios {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.form-vendas {
+    padding-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.form-vendas td {
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.botao-vendas {
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 1180px;
+    border: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #FFDAB9;
+    color: black;
+    font: normal 16px Candara, Arial, sans-serif;
+}
+
+.hist-vendas {
+    padding-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.hist-vendas td {
+    text-align: center;
+    border: solid 1px #FFDAB9;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
