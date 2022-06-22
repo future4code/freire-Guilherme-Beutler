@@ -1,15 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
+// import check from '../img/check.png'
 
 const ContainerUser = styled.div`
+color: #fff;
   display: flex;
-  border: 1px solid black;
   flex-direction: column;
+  align-items: center;
   width:30%;
   margin: 0 auto;
   padding: 24px;
   gap: 5px;
+`
+const Button = styled.button`
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  color: #fff;
+  background-color: #202231;
+  text-decoration: none;
+  padding: 10px 10px;
+  border: 2px solid rgba(10, 180, 180, 1);
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    animation: pulsate 1s ease-in-out;
+  }
+  @keyframes pulsate {
+    0%{
+      box-shadow: 0 0 25px #5DDCFF, 0 0 50px #4E00C2;
+    }
+  }
 `
 
 class CreateUser extends React.Component {
@@ -24,14 +47,14 @@ class CreateUser extends React.Component {
             name: this.state.inputNameUser,
             email: this.state.inputEmailUser
         };
-        this.setState.inputNameUser = '';
-
+        
         axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
             headers: {
                 Authorization: 'guilherme-beutler-freire'
             }
         }).then((resposta) => {
-            console.log(resposta.data);
+            alert('User registered successfully!')
+            this.setState({inputNameUser:"", inputEmailUser:""})
         }).catch((error) => {
             console.log(error.message);
         });
@@ -61,7 +84,7 @@ class CreateUser extends React.Component {
                     value={this.state.inputEmailUser}
                     onChange={this.onChangeInputEmail}
                 />
-                <button onClick={this.registerUser}>Save User</button>
+                <Button onClick={this.registerUser}>Save</Button>
             </ContainerUser>
         );
     };
