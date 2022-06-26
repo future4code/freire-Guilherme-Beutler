@@ -2,7 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 
+const NamePlaylist = styled.div`
+    padding-top: 20px;
+    cursor: pointer;
 
+`
+
+const AddSong = styled.div`
+    padding-top: 20px;
+    
+`
 
 class AddTrack extends React.Component {
 
@@ -21,11 +30,13 @@ class AddTrack extends React.Component {
     }
 
     getAllPlaylists = () => {
-        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists', {
-            headers: {
-                Authorization: 'guilherme-beutler-freire'
-            }
-        })
+        axios
+            .get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
+                {
+                    headers: {
+                        Authorization: 'guilherme-beutler-freire'
+                    }
+                })
             .then(response => {
                 this.setState({ playlists: response.data.result.list })
             })
@@ -41,13 +52,14 @@ class AddTrack extends React.Component {
             url: this.state.inputUrlTrack
         }
 
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`,
-        body, 
-        {
-            headers: {
-                Authorization: 'guilherme-beutler-freire'
-            }
-        })
+        axios
+            .post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`,
+                body,
+                {
+                    headers: {
+                        Authorization: 'guilherme-beutler-freire'
+                    }
+                })
             .then(response => {
                 alert('Music add successfuly!')
                 this.setState({ inputNameTrack: '', inputArtistTrack: '', inputUrlTrack: '' })
@@ -82,14 +94,14 @@ class AddTrack extends React.Component {
             if (this.state.render) {
                 return this.state.playlists.map((playlist) => {
                     return (
-                        <div key={playlist.id}>
+                        <NamePlaylist key={playlist.id}>
                             <p onClick={() => this.showRender(playlist.id)}>{playlist.name}</p>
-                        </div>
+                        </NamePlaylist>
                     )
                 })
             } else {
                 return (
-                    <div>
+                    <AddSong>
                         <h3>Add song on playlist</h3>
                         <div>
                             <label>Name:</label>
@@ -114,14 +126,14 @@ class AddTrack extends React.Component {
                         </div>
                         <button onClick={() => this.addTrackPlaylist(this.state.playlistId)}>Add Song</button>
                         <button onClick={this.showRender}>Back</button>
-                    </div>
+                    </AddSong>
                 )
             }
         }
 
         return (
             <div>
-                <h3>Selec the playlist you want to add the song to</h3>
+                <h3>Select the playlist you want to add the song to</h3>
                 <div>
                     {render()}
                 </div>

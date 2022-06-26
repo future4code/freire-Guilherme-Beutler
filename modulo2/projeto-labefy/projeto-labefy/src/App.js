@@ -2,9 +2,25 @@ import React from 'react';
 import AddTrack from './Components/AddTrack';
 import CreatePlaylist from './Components/CreatePlaylist';
 import Playlist from './Components/Playlist';
+import GlobalStyle from './global'
+import styled from 'styled-components';
 
+const ConteinerPrincipal = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 50px;
 
+`
 
+const Sections = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 20px;
+  height: 95vh;
+`
 
 class App extends React.Component {
 
@@ -32,19 +48,29 @@ class App extends React.Component {
         case 'playlist':
           return <Playlist />
         case 'music-playlist':
-          return <AddTrack />
+          return
       }
     }
 
     return (
-      <div>
-        <div>
-          <button onClick={this.renderCreatePlaylist}>Create Playlist</button>
-          <button onClick={this.renderPlaylist}>Playlist</button>
-          <button onClick={this.renderMusicPlaylist}>Add Music</button>
-        </div>
-        {render()}
-      </div>
+      <ConteinerPrincipal>
+        <Sections>
+          <div>
+            <CreatePlaylist />
+          </div>
+        </Sections>
+        <Sections>
+          <div>
+            <Playlist />
+          </div>
+        </Sections>
+        <Sections>
+          <div>
+            <AddTrack />
+          </div>
+        </Sections>
+        <GlobalStyle />
+      </ConteinerPrincipal>
     )
   }
 }
