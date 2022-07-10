@@ -84,8 +84,7 @@ export default function MainCard() {
                             photo={profiles.photo}
                             name={profiles.name}
                             age={profiles.age}
-                            bio={profiles.bio}
-                            
+                            bio={profiles.bio}                            
                         />
                         : <></>}
                     <FooterCard

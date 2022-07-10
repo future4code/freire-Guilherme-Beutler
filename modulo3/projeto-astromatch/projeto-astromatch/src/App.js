@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
-import MainCard from './Components/MainCard/MainCard'
+import AstromatchCards from './Components/AstromatchCards/AstromatchCards';
+import HeaderCard from './Components/Header/HeaderCard';
+// import MainCard from './Components/MainCard/MainCard'
 
 function App() {
   return (
     <div>
-      <MainCard />
+      <HeaderCard />
+      <AstromatchCards />
     </div>
   );
 }
