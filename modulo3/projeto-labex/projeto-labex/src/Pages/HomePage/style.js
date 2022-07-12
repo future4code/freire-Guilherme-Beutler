@@ -20,5 +20,6 @@ export const ButtonBody = styled.button`
     min-width: 180px;
     min-height: 60px;
     border-radius: 10px;
+    cursor: pointer;
 
 `
