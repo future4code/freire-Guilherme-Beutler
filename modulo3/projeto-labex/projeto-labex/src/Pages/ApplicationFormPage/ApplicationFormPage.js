@@ -5,6 +5,9 @@ import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { URL_BASE } from "../../Constants/URL_BASE"
 import Countries from "./Countries"
+import { goToListTripPage } from '../../Router/Coordinator'
+import Header from "../../Components/Header/Header"
+import {Body, CardBody, CssTextField, Inputs, Button, Select} from './style'
 
 
 
@@ -18,7 +21,7 @@ export default function ApplicationFormPage() {
     const tripsOptions = allTrips.trips && allTrips.trips.map((t) => {
         return <option key={t.id} value={t.id}>{t.name}</option>
     })
-    
+
     const inputChange = (ev) => {
         const { name, value } = ev.target
         onChange(name, value)
@@ -46,44 +49,51 @@ export default function ApplicationFormPage() {
     }
 
 
-
     return (
         <div>
+            <Header />
+            <Body>
+            <CardBody>
             <form onSubmit={formSubmit}>
                 <h3>Formulário de inscrição</h3>
-                <input
+                <Inputs>
+                <CssTextField
+                    id="outlined-basic"
+                    label="Nome Completo"
                     type="text"
                     name="name"
-                    placeholder="Digite seu Nome Completo"
                     value={form.name}
                     required
                     onChange={inputChange}
                 />
-                <input
+                <CssTextField
+                    id="outlined-basic"
+                    label="Idade"
                     type="number"
                     name="age"
-                    placeholder="Digite sua idade"
                     value={form.age}
                     required
                     onChange={inputChange}
                 />
-                <input
+                <CssTextField
+                    id="outlined-basic"
+                    label="Texto Candidatura"
                     type="text"
                     name="applicationText"
-                    placeholder="Por que merece ser selecionado?"
                     value={form.applicationText}
                     required
                     onChange={inputChange}
                 />
-                <input
+                <CssTextField
+                    id="outlined-basic"
+                    label="Profissão"
                     type="text"
                     name="profession"
-                    placeholder="Qual sua profissão?"
                     value={form.profession}
                     required
                     onChange={inputChange}
                 />
-                <select 
+                <Select
                     name='country'
                     onChange={inputChange}
                     value={form.country}
@@ -92,9 +102,9 @@ export default function ApplicationFormPage() {
                     <option value=''>
                         Escolha o país
                     </option>
-                    <Countries />                
-                </select>
-                <select 
+                    <Countries />
+                </Select>
+                <Select
                     name='trip'
                     onChange={inputChange}
                     value={form.trip}
@@ -102,10 +112,16 @@ export default function ApplicationFormPage() {
                 >
                     <option value=''>Escolha a viagem</option>
                     {tripsOptions}
-                </select>
+                </Select>
                 <br></br>
-                <button type={"submit"}>Enviar</button>
+                </Inputs>
+                <div>
+                    <Button onClick={() => goToListTripPage(navigate)}>Voltar</Button>
+                    <Button type={"submit"}>Enviar</Button>
+                </div>
             </form>
+            </CardBody>
+            </Body>
         </div>
     )
 }

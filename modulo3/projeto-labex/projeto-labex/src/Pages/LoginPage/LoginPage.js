@@ -2,7 +2,9 @@ import { useState } from "react"
 import { URL_BASE } from '../../Constants/URL_BASE'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
-import {goToAdmHomePage} from '../../Router/Coordinator'
+import { goToAdmHomePage } from '../../Router/Coordinator'
+import Header from "../../Components/Header/Header";
+import { Body, Button, CardBody, CssTextField } from "./style";
 
 
 export default function LoginPage() {
@@ -39,21 +41,31 @@ export default function LoginPage() {
 
     return (
         <div>
-            <input
-                placeholder={'E-mail'}
-                type={'email'}
-                value={email}
-                onChange={onChangeEmail}
-                required
-            />
-            <input
-                placeholder={'Password'}
-                type={'password'}
-                value={password}
-                onChange={onChangePassword}
-                required
-            />
-            <button type={'submit'} onClick={onSubmitLogin}>Entrar</button>
+            <Header />
+            <Body>
+                <CardBody>
+                    <div>
+                        <h3>Login</h3>
+                    </div>
+                    <CssTextField
+                        id="outlined-basic"
+                        label="E-mail"
+                        type={'email'}
+                        value={email}
+                        onChange={onChangeEmail}
+                        required
+                    />
+                    <CssTextField
+                        id="outlined-basic"
+                        label="Password"
+                        type={'password'}
+                        value={password}
+                        onChange={onChangePassword}
+                        required
+                    />
+                    <Button type={'submit'} onClick={onSubmitLogin}>Entrar</Button>
+                </CardBody>
+            </Body>
         </div>
     )
 }

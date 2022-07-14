@@ -5,7 +5,7 @@ export const Body = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: #17323D;
-    height: 90vh;
+    min-height: 90vh;
 `;
 
 export const CardBody = styled.div`
@@ -16,7 +16,7 @@ export const CardBody = styled.div`
     width: 95vw;
     min-height: 80vh;
     border-radius: 20px;
-    margin-top: 5vh;
+    margin: 5vh 0vh;
 `;
 
 export const CardTrip = styled.div`
@@ -24,6 +24,17 @@ export const CardTrip = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     padding: 5px 20px;
+    padding-bottom: 30px;
+
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding: 10px;
+    margin: 0px 20px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
 `;
 
 export const BodyCardTrip = styled.div`
