@@ -14,3 +14,16 @@ export const goToLogin = (navigate) => {
 export const goToForm = (navigate) => {
     navigate('/trips/application')
 }
+
+export const goToAdmHomePage = (navigate) => {
+    navigate('/admin/trips/list')
+}
+
+export const logout = (navigate) => {
+    localStorage.removeItem('token')
+    navigate('/login')
+}
+
+export const goToTripDetails = (navigate, id) => {
+    navigate(`/admin/trips/${id}`)
+}

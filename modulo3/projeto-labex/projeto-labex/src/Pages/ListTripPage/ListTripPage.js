@@ -5,7 +5,7 @@ import Header from '../../Components/Header/Header';
 import Back from '../../Img/Back.png';
 import Subscribe from '../../Img/Subscribe.png';
 import { useNavigate } from 'react-router-dom';
-import { goToForm } from '../../Router/Coordinator';
+import { goToForm, goToHome } from '../../Router/Coordinator';
 
 
 export default function ListTripPage() {
@@ -29,7 +29,7 @@ export default function ListTripPage() {
             <Body>
                 <CardBody>
                     <HeaderBody>
-                        <Img src={Back} />
+                        <Img onClick={() => goToHome(navigate)} src={Back} />
                         <h1>Viagens</h1>
                         <Img onClick={() => goToForm(navigate)} src={Subscribe} />
                     </HeaderBody>
