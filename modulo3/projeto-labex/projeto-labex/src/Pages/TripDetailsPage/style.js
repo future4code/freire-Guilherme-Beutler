@@ -26,6 +26,9 @@ export const CardCandidate = styled.div`
     text-align: center;
     width: 35vw;
     margin-bottom: 15px;
+    @media (max-width: 480px) {
+        width: 43vw;
+    }
 `;
 
 export const GridCandidates = styled.div`
@@ -53,6 +56,9 @@ export const Button = styled.button`
     height: 35px;
     border-radius: 10px;
     cursor: pointer;
+    @media (max-width: 480px) {
+        width: 18vw;
+    }
 `;
 
 export const ButtonDiv = styled.div`
