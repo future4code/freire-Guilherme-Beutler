@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestData from "../../hooks/useRequestData";
+import Pagination from "../../components/Header/Pagination/Pagination";
+import like from '../../assets/img/like.png'
+import like2 from '../../assets/img/like2.png'
+import dislike from '../../assets/img/dislike.png'
+import dislike2 from '../../assets/img/dislike2.png'
+import chat from '../../assets/img/chat.png'
+import send from '../../assets/img/send.png'
 import { BASE_URL } from '../../constants/urls'
-import { PostContainer, ButtonContainer, FeedContainer, CardFeed, MainContainer } from './styled'
+import FeedForm from "./FeedForm";
+import {
+    PostContainer,
+    ButtonContainer,
+    FeedContainer,
+    CardFeed,
+    MainContainer,
+    Votos,
+    Comment,
+    CardDown,
+    Send,
+    InputContainer
+} from './styled'
 
 export default function FeedPage() {
     useProtectedPage()
@@ -14,19 +33,27 @@ export default function FeedPage() {
         return <CardFeed key={post.id}>
             <p>{`Enviado por: ${post.username}`}</p>
             <h3>{post.body}</h3>
-            <p>{post.voteSum}</p>
+            <CardDown>
+                <Votos>
+                    <img src={like} />
+                    <p>{post.voteSum}</p>
+                    <img src={dislike} />
+                </Votos>
+                <Comment>
+                    <img src={chat} />
+                    <p>{post.commentCount}</p>
+                </Comment>
+                <Send>
+                    <img src={send} />
+                </Send>
+            </CardDown>
         </CardFeed>
     })
     return (
         <MainContainer>
             <PostContainer>
-                <input
-                    placeholder="Escreva seu post..."
-                />
+                <FeedForm />
             </PostContainer>
-            <ButtonContainer>
-                <button>Postar</button>
-            </ButtonContainer>
             <FeedContainer>
                 {feedCard}
             </FeedContainer>
