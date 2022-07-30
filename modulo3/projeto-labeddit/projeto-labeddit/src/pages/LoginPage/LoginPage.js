@@ -24,6 +24,7 @@ export default function LoginPage() {
                         onClick={() => goToSignUpPage(navigate)}
                     >
                         Crie uma conta!
+                        
                     </ButtonTwo>
                 </DivButtons>
             </Body>

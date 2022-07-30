@@ -10,16 +10,12 @@ export default function useRequestData(initiaData, url) {
                 headers: {
                     Authorization: localStorage.getItem('token')
                 },
-                params: {
-                    page: '1',
-                    size: '10'
-                }
             })
             .then((response) => {
                 setData(response.data)
             })
             .catch((error) => {
-                console.log(error.response.data.message)
+                console.log(error)
             })
     }, [])
 

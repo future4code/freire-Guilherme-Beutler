@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 `
 export const Form = styled.div`
     border-bottom: 1px solid #FF6489;
@@ -66,6 +70,7 @@ export const CardFeed = styled.div`
         line-height: 16px;
         color: #6F6F6F;
         margin-left: 20px;
+        margin-top: 10px;
     }
 
     h3 {
@@ -83,7 +88,7 @@ export const Votos = styled.div`
     align-items: center;
     text-align: center;
     border: 1px solid #E0E0E0;
-    width: 80px;
+    width: 100px;
     height: 30px;
     margin: 0px 20px;
     padding: 0 10px;
@@ -92,10 +97,11 @@ export const Votos = styled.div`
     p {
         margin-right: 20px;
         align-items: center;
+        margin-top: 10px;
     }
 
     img{
-        
+
     }
 `
 export const Comment = styled.div`

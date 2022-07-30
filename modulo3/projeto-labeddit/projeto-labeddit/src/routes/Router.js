@@ -14,7 +14,7 @@ export default function Router() {
                 <Route path='/' element={<LoginPage />}/>
                 <Route path='/sign' element={<SignUpPage />}/>
                 <Route path='/feed' element={<FeedPage />}/>
-                <Route path='/post' element={<PostPage />}/>
+                <Route path='/posts/:id' element={<PostPage />}/>
                 <Route path='*' element={<ErrorPage />}/>
             </Routes>
         </BrowserRouter>

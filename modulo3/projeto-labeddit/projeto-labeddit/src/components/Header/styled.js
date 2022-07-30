@@ -13,6 +13,8 @@ export const DivHeader = styled.div`
     p{
         font-size: 18px;
         color: #4088CB;
+        margin-top: 15px;
+
     }
 
     img{

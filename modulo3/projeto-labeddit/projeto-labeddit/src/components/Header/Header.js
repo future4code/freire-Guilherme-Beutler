@@ -3,11 +3,13 @@ import ClearIcon from '@mui/icons-material/Clear'
 import Logo from '../../assets/img/logo.png'
 import { DivHeader } from './styled'
 import { useNavigate } from "react-router-dom";
-import { goToLoginPage } from '../../routes/Coordinator';
+import { goToLoginPage, goToFeedPage } from '../../routes/Coordinator';
 
 
 export default function Header() {  
   const navigate = useNavigate()
+
+  let postId = window.location.pathname + "/" + window.location.search
 
   const logout = () => {
     localStorage.removeItem('token')
@@ -31,22 +33,22 @@ export default function Header() {
       }
 
       {
-        window.location.pathname === '/feed' ?
+        window.location.pathname !== '/' ?
           <DivHeader>
-            <ClearIcon />
+            <ClearIcon onClick={() => goToFeedPage(navigate)}/>
             <img src={Logo} />
             <p onClick={() => logout()}>Logout</p>
           </DivHeader> : ''
       }
 
-      {
-        window.location.pathname === '/post' ?
+      {/* {
+        postId === postId ?
           <DivHeader>
-            <ClearIcon />
+            <ClearIcon onClick={() => goToFeedPage(navigate)}/>
             <img src={Logo} />
-            <p>Logout</p>
+            <p onClick={() => logout()}>Logout</p>
           </DivHeader> : ''
-      }
+      } */}
     </div>
   )
 }

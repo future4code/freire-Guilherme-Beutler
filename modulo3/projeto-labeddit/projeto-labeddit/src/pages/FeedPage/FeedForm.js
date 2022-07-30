@@ -1,41 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
-import { createPost } from "../../services/posts";
-import {InputContainer, Button, Form} from './styled'
+import { createPost } from '../../services/posts'
+import { InputContainer, Button, Form } from './styled'
+import { CircularProgress } from "@mui/material";
 
 export default function FeedForm() {
     const [form, onChange, clear] = useForm({ title: '', body: '' })
+    const [loading, setLoading] = useState(false)
 
     const onSubmitForm = (ev) => {
         ev.preventDefault()
-        createPost(form, clear)       
+        createPost(form, clear, setLoading)
     }
 
     return (
-        <Form onSubmit={onSubmitForm}>
-            <InputContainer>
-            <input
-                name={'title'}
-                value={form.title}
-                onChange={onChange}
-                label={'Título'}
-                required
-                placeholder="Título:"
-            />
-            <input
-                name={'body'}
-                value={form.body}
-                onChange={onChange}
-                label={'Escreva seu post...'}
-                required
-                placeholder="Escreva seu post..."
-            />
-            </InputContainer>
-            <Button
-                type={'submit'}
-            >
-                Postar
-            </Button>  
+        <Form>
+            <form onSubmit={onSubmitForm}>
+                <InputContainer>
+                    <input
+                        name={'title'}
+                        value={form.title}
+                        onChange={onChange}
+                        placeholder="Título:"
+                        required
+                    />
+                    <input
+                        name={'body'}
+                        value={form.body}
+                        onChange={onChange}
+                        placeholder="Escreva seu post..."
+                        required
+                    />
+                </InputContainer>
+                <Button
+                    type={'submit'}
+                >
+                    {loading ? <CircularProgress color={'inherit'} size={36} /> : <> Postar</>}
+                </Button>
+            </form>
         </Form>
     )
 }
