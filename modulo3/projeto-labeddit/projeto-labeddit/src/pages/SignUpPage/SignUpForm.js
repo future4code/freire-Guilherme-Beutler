@@ -1,9 +1,9 @@
-import React from "react";
-import TextField from '@mui/material/TextField';
+import React from 'react';
 import { Body, ButtonOne, DivInput } from './styled'
-import useForm from "../../hooks/useForm";
-import { signUp } from "../../services/user";
-import { useNavigate } from "react-router-dom";
+import { signUp } from '../../services/user';
+import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import useForm from '../../hooks/useForm';
 
 
 export default function LoginForm() {
@@ -22,8 +22,8 @@ export default function LoginForm() {
                 <DivInput>
                     <form onSubmit={onSubmitForm}>
                         <TextField
-                            label="Nome"
-                            variant="outlined"
+                            label='Nome'
+                            variant='outlined'
                             name={'username'}
                             value={form.username}
                             onChange={onChange}
@@ -31,8 +31,8 @@ export default function LoginForm() {
                             required
                         />
                         <TextField
-                            label="E-mail"
-                            variant="outlined"
+                            label='E-mail'
+                            variant='outlined'
                             name={'email'}
                             value={form.email}
                             onChange={onChange}
@@ -40,9 +40,9 @@ export default function LoginForm() {
                             required
                         />
                         <TextField
-                            label="Senha"
-                            variant="outlined"
-                            type="password"
+                            label='Senha'
+                            variant='outlined'
+                            type='password'
                             name={'password'}
                             value={form.password}
                             onChange={onChange}

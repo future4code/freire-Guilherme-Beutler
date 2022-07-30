@@ -1,16 +1,18 @@
 
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../constants/urls";
-import { useNavigate } from "react-router-dom";
-import useForm from "../../hooks/useForm";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import axios from "axios";
-import chat from '../../assets/img/chat.png'
-import downred from '../../assets/img/downred.png'
-import up from '../../assets/img/up.png'
-import upgreen from '../../assets/img/upgreen.png'
-import down from '../../assets/img/down.png'
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { BASE_URL } from '../../constants/urls';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
+import BackToTop from '../../components/BackToTop/BackToTop';
+import useForm from '../../hooks/useForm';
+import useProtectedPage from '../../hooks/useProtectedPage';
+import axios from 'axios';
+import chat from '../../assets/img/chat.png';
+import downred from '../../assets/img/downred.png';
+import up from '../../assets/img/up.png';
+import upgreen from '../../assets/img/upgreen.png';
+import down from '../../assets/img/down.png';
 import {
     CardFeed,
     MainContainer,
@@ -21,6 +23,7 @@ import {
     Button,
     CommentsContainer
 } from './styled'
+import Loading from '../../components/Loading/Loading';
 
 
 export default function PostPage() {
@@ -28,9 +31,10 @@ export default function PostPage() {
     const navigate = useNavigate()
     const postId = useParams()
     const [post, setPost] = useState({});
-    const [form, onChange, clean] = useForm({ body: "" });
+    const [form, onChange, clean] = useForm({ body: '' });
     const [comments, setComments] = useState([]);
     const [vote, setVote] = useState({})
+    const [loading, setLoading] = useState(false)
 
     const getPost = () => {
         axios
@@ -79,7 +83,7 @@ export default function PostPage() {
     }
 
     const CreateComments = (id) => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
         const body = {
             body: form.body
         };
@@ -94,11 +98,12 @@ export default function PostPage() {
 
             .then((res) => {
                 console.log(res.data)
+                setLoading()
                 getComments(id);
                 clean()
             })
             .catch((err) => {
-                console.log("Erro tente novamente!");
+                console.log('Erro tente novamente!');
             });
     };
 
@@ -133,7 +138,6 @@ export default function PostPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
                     getPost()
                 })
                 .catch((error) => {
@@ -148,7 +152,6 @@ export default function PostPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
                     getPost()
                 })
                 .catch((error) => {
@@ -163,7 +166,6 @@ export default function PostPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
                     getPost()
                 })
                 .catch((error) => {
@@ -203,15 +205,19 @@ export default function PostPage() {
                 <input
                     value={form.body}
                     onChange={onChange}
-                    name="body"
-                    placeholder="Adicionar comentario"
+                    name='body'
+                    placeholder='Adicionar comentario'
                 />
             </InputContainer>
 
-            <Button onClick={() => CreateComments(post.id)}>Criar</Button>
+            <Button
+                onClick={() => CreateComments(post.id)}
+            >
+                {loading ? <CircularProgress color={'inherit'} size={36} /> : <> Criar</>}
+            </Button>
 
             <CommentsContainer>
-                {comments.map((c) => {
+                {comments.length > 0 ? comments.map((c) => {
                     return (
                         <CardFeed key={c.id}>
                             <p>{`Enviado por: ${c.username}`}</p>
@@ -225,8 +231,9 @@ export default function PostPage() {
                             </CardDown>
                         </CardFeed>
                     )
-                })}
+                }) : <Loading />}
             </CommentsContainer>
+            <BackToTop />
         </MainContainer>
     )
 }

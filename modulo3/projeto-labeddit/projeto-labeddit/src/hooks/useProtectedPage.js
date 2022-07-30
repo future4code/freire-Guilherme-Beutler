@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useLayoutEffect } from "react";
-import { goToLoginPage } from "../routes/Coordinator";
+import { useNavigate } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { goToLoginPage } from '../routes/Coordinator';
 
 
 export default function useProtectedPage() {

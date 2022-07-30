@@ -1,10 +1,10 @@
-import React, {useState} from "react";
-import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
 import { Body, ButtonOne, DivInput } from './styled'
-import useForm from "../../hooks/useForm";
-import { login } from "../../services/user";
-import { useNavigate } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { login } from '../../services/user';
+import { useNavigate } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import useForm from '../../hooks/useForm';
 
 
 export default function LoginForm() {
@@ -23,8 +23,8 @@ export default function LoginForm() {
                 <DivInput>
                     <form onSubmit={onSubmitForm}>
                         <TextField
-                            label="E-mail"
-                            variant="outlined"
+                            label='E-mail'
+                            variant='outlined'
                             name={'email'}
                             value={form.email}
                             onChange={onChange}
@@ -32,9 +32,9 @@ export default function LoginForm() {
                             required
                         />
                         <TextField
-                            label="Senha"
-                            variant="outlined"
-                            type="password"
+                            label='Senha'
+                            variant='outlined'
+                            type='password'
                             name={'password'}
                             value={form.password}
                             onChange={onChange}
@@ -44,7 +44,7 @@ export default function LoginForm() {
                         <ButtonOne
                             type={'submit'}
                         >
-                            {loading ? <CircularProgress color={'inherit'} size={36}/> : <>Continuar</>}
+                            {loading ? <CircularProgress color={'inherit'} size={36} /> : <>Continuar</>}
                         </ButtonOne>
                     </form>
                 </DivInput>

@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { BASE_URL } from '../../constants/urls'
+import { useNavigate } from 'react-router-dom';
+import { Pagination } from '@mui/material'
+import { goToPostPage } from '../../routes/Coordinator';
+import Loading from '../../components/Loading/Loading';
+import BackToTop from '../../components/BackToTop/BackToTop';
 import useProtectedPage from '../../hooks/useProtectedPage'
-import useRequestData from "../../hooks/useRequestData";
-import axios from "axios";
+import axios from 'axios';
 import downred from '../../assets/img/downred.png'
 import up from '../../assets/img/up.png'
 import upgreen from '../../assets/img/upgreen.png'
 import down from '../../assets/img/down.png'
 import chat from '../../assets/img/chat.png'
 import send from '../../assets/img/send.png'
-import { BASE_URL } from '../../constants/urls'
-import { useNavigate } from "react-router-dom";
-import FeedForm from "./FeedForm";
+import FeedForm from './FeedForm';
 import {
     PostContainer,
     FeedContainer,
@@ -21,31 +24,38 @@ import {
     CardDown,
     Send,
 } from './styled'
-import { goToFeedPage, goToPostPage } from "../../routes/Coordinator";
-import Loading from "../../components/Loading/Loading";
-import { Pagination } from "antd";
 
 
 export default function FeedPage() {
     useProtectedPage()
     const navigate = useNavigate()
+    const [page, setPage] = useState(1);
+    const [att, setAtt] = useState({})
 
+    const getAtt = () => {
+        axios
+            .get(`${BASE_URL}/posts?page=${page}`,
+                {
+                    headers: {
+                        Authorization: localStorage.getItem('token')
+                    }
+                })
+            .then((response) => {
+                setAtt(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
-    const [total, setTotal] = useState('')
-    const [page, setPage] = useState(0)
-    const [postPerPage, setPostPerPage] = useState(10)
-    const [vote, setVote] = useState({})
+    useEffect(() => {
+        getAtt()
+    }, [])
 
-    const feed = useRequestData([], `${BASE_URL}/posts`)
+    const handleChange = (ev, value) => {
+        setPage(value)
+        getAtt()
 
-    const indexOfLastPage = page + postPerPage
-    const indexFirstPage = indexOfLastPage - postPerPage
-    const currentPosts = feed.slice(indexFirstPage, indexOfLastPage)
-
-
-
-    const onShowSizeChange = (current, pageSize) => {
-        setPostPerPage(pageSize)
     }
 
     const onClickPost = (id) => {
@@ -83,7 +93,7 @@ export default function FeedPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
+                    getAtt()
                 })
                 .catch((error) => {
                     alert('Erro, tente novamente')
@@ -97,7 +107,7 @@ export default function FeedPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
+                    getAtt()
                 })
                 .catch((error) => {
                     alert('Erro, tente novamente')
@@ -111,7 +121,7 @@ export default function FeedPage() {
                         }
                     })
                 .then((response) => {
-                    alert('ok')
+                    getAtt()
                 })
                 .catch((error) => {
                     alert('Erro, tente novamente')
@@ -120,7 +130,7 @@ export default function FeedPage() {
     }
 
 
-    const feedCard = currentPosts.map((post) => {
+    const feedCard = Object.values(att).map((post) => {
         return <CardFeed
             key={post.id}
         >
@@ -164,14 +174,11 @@ export default function FeedPage() {
                 {feedCard.length > 0 ? feedCard : <Loading />}
             </FeedContainer>
             <Pagination
-                pageSize={postPerPage}
-                total={total}
-                current={page}
-                onChange={(value) => setPage(value)}
-                showSizeChanger
-                showQuickJumper
-                onShowSizeChange={onShowSizeChange}
+                count={10}
+                page={page}
+                onChange={handleChange}
             />
+            <BackToTop />
         </MainContainer>
     )
 }

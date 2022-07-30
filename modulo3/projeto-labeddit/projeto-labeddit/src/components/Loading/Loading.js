@@ -1,6 +1,6 @@
-import React from "react";
-import { CircularProgress } from "@mui/material";
-import { LoandingContainer } from "./styled";
+import React from 'react';
+import { CircularProgress } from '@mui/material';
+import { LoandingContainer } from './styled';
 
 export default function Loading() {
     return(

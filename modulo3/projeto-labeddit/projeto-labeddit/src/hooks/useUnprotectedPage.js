@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useLayoutEffect } from "react";
-import { goToFeedPage, goToPostPage } from "../routes/Coordinator";
+import { useNavigate } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { goToFeedPage, goToPostPage } from '../routes/Coordinator';
 
 
 export default function useProtectedPage() {

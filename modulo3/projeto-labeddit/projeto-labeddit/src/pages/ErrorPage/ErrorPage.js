@@ -1,12 +1,12 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { goToFeedPage } from "../../routes/Coordinator";
-import {Body} from './styled'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { goToFeedPage } from '../../routes/Coordinator';
+import { Body } from './styled'
 
 export default function ErrorPage() {
     const navigate = useNavigate()
 
-    return(
+    return (
         <Body>
             <h3>Error</h3>
             <h1>404</h1>
