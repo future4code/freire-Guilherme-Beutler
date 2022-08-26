@@ -1,0 +1,121 @@
+### Exercício 1
+
+a) VARCHAR: utlizado para strings e limitar o tamanho.
+
+b) SHOW DATABASES: exibe todos os bancos.
+   SHOW TABLES: exibe todas as tabelas criadas.
+
+c) DESRIBE: exibe o nome das colunas, tipos,
+se o campo pode ficar sem ser preenchido, a PK.
+
+---
+
+### Exercício 2
+
+a)
+
+INSERT INTO Actor (id, name, salary, birth_date, gender) 
+VALUES(
+	'002',
+    'Gloria Pires',
+    1200000,
+    '1963-08-23',
+    'female'
+);
+
+b) O erro ocorreu pois o ID é do tipo unico (primary key). Como já existe um elemento cadastrado no banco de dados com o mesmo ID, a operação apresentou erro.
+
+c) Erro: A quantidade de colunas não corresponde a quantidade de valores passados para cadastro.
+CORREÇÃO:
+INSERT INTO Actor (id, name, salary, birth_date, gender) 
+VALUES(
+  "003", 
+  "Fernanda Montenegro",
+  300000,
+  "1929-10-19", 
+  "female"
+);
+
+d) O erro ocorreu pois o nome não pode estar em branco, ou seja, NOT NULL.
+
+e) Erro: data tem o formato de DATE não de numero. Correção:
+
+---
+
+### Exercício 3
+
+a)  SELECT * FROM Actor WHERE gender = 'female';
+
+b) SELECT salary FROM Actor WHERE name = 'Tony Ramos';
+
+c) nada retornou pois todos estao preenchidos.
+
+d) SELECT id, name, salary FROM Actor WHERE salary <= 500000;
+
+e) Erro: a coluna 'nome' não existe. Correção:
+SELECT id, name from Actor WHERE id = "002";
+
+---
+
+### Exercício 4
+
+a) A query em questão pertmite que refinemos as buscas em um banco de dados.
+
+b)
+SELECT * FROM Actor
+WHERE (name NOT LIKE "A%" ) AND salary > 300000;
+
+c)
+SELECT * FROM Actor
+WHERE name LIKE "%G%" OR '%g%';
+
+d)
+SELECT * FROM Actor
+WHERE (name LIKE "%G%" OR '%g%' OR "%A%" OR '%a%') AND salary BETWEEN 350000 AND 900000;
+
+---
+
+### Exercício 5
+
+a)
+CREATE TABLE Films (
+	id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    sinopse TEXT NOT NULL,
+    release_date DATE NOT NULL,
+    rating INT NOT NULL
+);
+
+---
+
+### Exercício 6
+
+a) SELECT id, name, rating FROM Films
+WHERE id = '004';
+
+b) SELECT id, name, rating FROM Films
+WHERE name = 'Doce de mae';
+
+c) SELECT id, name, sinopse FROM Films
+WHERE rating > 7;
+
+---
+
+### Exercício 7
+
+a) SELECT * FROM Films
+WHERE name LIKE "%vida%";
+
+b) SELECT * FROM Films
+WHERE name LIKE "%TERMO DE BUSCA%" OR
+sinopse LIKE "%TERMO DE BUSCA%";
+
+c) SELECT * FROM Films
+WHERE release_date < "2022-08-20";
+
+d) SELECT * FROM Films
+WHERE release_date < "2022-08-20" AND 
+(name LIKE "%TERMO DE BUSCA%" OR
+sinopse LIKE "%TERMO DE BUSCA%") AND rating > 7;
+
+
