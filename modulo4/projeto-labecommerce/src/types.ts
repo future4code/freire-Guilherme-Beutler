@@ -23,3 +23,11 @@ export type ProductDb = {
     price: number,
     image_url: string
 }
+
+export type purchasesData = {
+    id: string,
+    userId: string,
+    productId: string,
+    quantity: number,
+    totalPrice: number
+}
