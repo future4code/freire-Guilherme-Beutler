@@ -1,0 +1,93 @@
+### Exercício 1
+
+a) Exclui a coluna salary.
+
+b) Altera a coluna de genero para sex.
+
+c) Retorna para genero.
+
+---
+
+### Exercício 2
+
+a) 
+UPDATE Actor
+SET 
+name = 'Moacyr Franco',
+birth_date = '1936-10-05'
+WHERE id = '003';
+
+b) 
+UPDATE Actor
+SET name = "JULIANA PÃES"
+WHERE name = "Juliana Paes";
+
+c)
+UPDATE Actor
+SET 
+name = "Moacyr Franco",
+birth_date = "2020-02-10",
+salary = 600000,
+gender = "male"
+WHERE id = "005";
+
+---
+
+### Exercício 3
+
+a) DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+
+b)
+DELETE FROM Actor
+WHERE
+gender = "male" AND
+salary > 1000000
+
+---
+
+### Exercício 4
+
+a) SELECT MAX(salary) FROM Actor
+
+b)SELECT MIN(salary) FROM Actor WHERE gender = "female"
+
+c) SELECT MIN(salary) FROM Actor WHERE gender = "female"
+ 
+d) SELECT SUM(salary) FROM Actor
+
+---
+
+### Exercício 5
+
+b) SELECT id, name FROM Actor
+ORDER BY name DESC;
+
+c) SELECT * FROM Actor
+ORDER BY salary;
+
+d) SELECT * FROM Actor
+ORDER BY salary DESC
+LIMIT 3;
+
+e) SELECT * FROM Actor
+ORDER BY salary DESC
+LIMIT 3;
+
+---
+
+### Exercício 6
+
+a) ALTER TABLE Films
+ADD playing_limit_date DATE;
+
+b) ALTER TABLE Films
+CHANGE rating rating FLOAT;
+
+c) UPDATE Films
+SET playing_limit_date = '2022-07-20'
+WHERE id = '001';
+
+d) DELETE FROM Films
+WHERE id = "001";
+
+
