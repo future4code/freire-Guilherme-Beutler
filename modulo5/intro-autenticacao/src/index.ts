@@ -1,6 +1,9 @@
 import app from "./app"
-import editUser from './endpoints/editUser'
-import createUser from './endpoints/createUser'
+import { UserController } from "./endpoints/UserController"
 
-app.post('/user/signup', createUser)
-app.put('/user/edit/:id', editUser)
+const userController = new UserController()
+
+
+app.get('/user/profile', userController.getUserProfile)
+app.post('/user/signup', userController.createUser)
+app.post('/user/login', userController.login)
