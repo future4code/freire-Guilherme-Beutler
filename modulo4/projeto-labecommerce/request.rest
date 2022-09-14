@@ -1,0 +1,42 @@
+POST  http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Ciclano",
+    "email": "Ciclano@gmail.com",
+    "password": "Ciclano123"
+}
+
+###
+
+GET http://localhost:3003/users
+
+###
+
+POST  http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Cadeira Gamer ThunderX3",
+    "price": 1299.99,
+    "image_url": "https://images.kabum.com.br/produtos/fotos/92008/92008_5_1526389239_gg.jpg"
+}
+
+###
+
+GET http://localhost:3003/products
+
+###
+
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+   "userId": "1662489473121",
+   "productId": "1662494145135",
+   "quantity": 3
+}
+
+###
+
+GET http://localhost:3003/users/1662489473121/purchases
