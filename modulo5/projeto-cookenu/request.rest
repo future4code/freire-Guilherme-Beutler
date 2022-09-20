@@ -1,0 +1,50 @@
+# create user
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Bernardo",
+    "email": "bernardo@gmail.com",
+    "password": "123456",
+    "role": "user"
+}
+
+###
+# user login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "guilherme@gmail.com",
+    "password": "123456"
+}
+
+###
+# get user logged
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwOTIyOGMzLTVjMTQtNDJmYy05NjlmLTM3ZDRhZDAwMDk2NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzM1NTU1NSwiZXhwIjoxNjYzNDQxOTU1fQ.6HPvKgehZOhz7DkGt_ikxHn2AWi3PNo8jW4XnNW_bmc
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# get user by id
+GET http://localhost:3003/user/9c13e8ed-05a3-4e07-b4c5-641e1f28654a
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# create recipe
+POST http://localhost:3003/recipe
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "title": "Lasanha bolonhesa",
+    "description": "Aquela lasanha de almoço no domingo"
+}
+
+###
+# get recipe by id
+GET http://localhost:3003/recipe/02d71b61-d2e4-4f53-bd32-b01d46051448
+Content-Type: application/json
+Authorization: {{token}}
