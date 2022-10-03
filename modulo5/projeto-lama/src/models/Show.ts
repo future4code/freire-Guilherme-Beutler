@@ -16,7 +16,7 @@ export class Show {
         private band: string,
         private startsAt: Date,
         private tickets: number = 5000
-    ) {}
+    ) { }
 
     public getId = () => {
         return this.id
@@ -49,16 +49,40 @@ export class Show {
     public setTickets = (newTickets: number) => {
         this.tickets = newTickets
     }
-    
+
 }
 
-export interface ShowInputDTO {
-    bandId: string
-    starts_at: Date
-    token: string
+export interface ICreateShowInputDTO {
+    token: string,
+    band: string,
+    startsAt: string
 }
 
-export interface ShowOutputDTO {
+export interface ICreateShowOutputDTO {
     message: string,
-    token: string
+    show: Show
+}
+
+export interface IGetShowsOutputDTO {
+    shows: Show[]
+}
+
+export interface IBuyTicketInputDTO {
+    token: string,
+    showId: string
+}
+
+export interface IBuyTicketOutputDTO {
+    message: string,
+    showDate: Date,
+    band: string
+}
+
+export interface IDeleteTicketInputDTO {
+    token: string,
+    showId: string
+}
+
+export interface IDeleteTicketOutputDTO {
+    message: string
 }

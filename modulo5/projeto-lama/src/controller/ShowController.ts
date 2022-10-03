@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import { ShowBusiness } from "../business/ShowBusiness";
 import { BaseError } from "../errors/BaseError";
-import { ShowInputDTO } from "../models/Show";
+import { IBuyTicketInputDTO, ICreateShowInputDTO, IDeleteTicketInputDTO } from "../models/Show";
 
 export class ShowController {
     constructor(
@@ -10,24 +10,72 @@ export class ShowController {
 
     public createShow = async (req: Request, res: Response) => {
         try {
-            const token = req.headers.authorization as string
-            const { bandId, starts_at } = req.body
-
-            const newShow: ShowInputDTO = {
-                bandId,
-                starts_at,
-                token
+            const input: ICreateShowInputDTO = {
+                token: req.headers.authorization as string,
+                band: req.body.band,
+                startsAt: req.body.startsAt
             }
 
-            await this.showBusiness.createShow(newShow)
+            const response = await this.showBusiness.createShow(input)
+            res.status(201).send(response)
 
-            res.status(201).send({ message: 'Show criado com sucesso!' })
-
-        } catch (error: any) {
+        } catch (error: unknown) {
             if (error instanceof BaseError) {
                 return res.status(error.statusCode).send({ message: error.message })
             }
             res.status(500).send({ message: "Erro inesperado ao cadastrar show" })
+        }
+    }
+
+    public getShows = async (req: Request, res: Response) => {
+        try {
+            const response = await this.showBusiness.getShows()
+            res.status(200).send(response)
+
+        } catch (error: unknown) {
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            res.status(500).send({ message: "Erro inesperado ao buscar shows" })
+        }
+    }
+
+    public buyTicket = async (req: Request, res: Response) => {
+        try {
+            const input: IBuyTicketInputDTO = {
+                token: req.headers.authorization as string,
+                showId: req.params.id
+            }
+
+            const response = await this.showBusiness.buyTicket(input)
+            res.status(200).send(response)
+
+        } catch (error: unknown) {
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            res.status(500).send({ message: "Erro inesperado ao reservar seu ingresso." })
+        }
+    }
+
+    public deleteTicket = async (req: Request, res: Response) => {
+        try {
+            const input: IDeleteTicketInputDTO = {
+                token: req.headers.authorization as string,
+                showId: req.params.id
+            }
+
+            const response = await this.showBusiness.deleteTicket(input)
+            res.status(200).send(response)
+
+        } catch (error: unknown) {
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            res.status(500).send({ message: "Erro inesperado ao cancelar ingresso." })
         }
     }
 }
